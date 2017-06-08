@@ -1,0 +1,26 @@
+<h1> Managers tasks </h1>
+<input type="text" placeholder="My tasks here" ng-model="tasks" required/>
+<button ng-click="addTasks()"> Add tasks </button>
+<button ng-click="inComplete()"> Incomplete tasks </button>
+<input type="text" placeholder="Search" ng-model="search" required/>
+<p ng-hide="err"> {{error}}</p>
+<table>
+        <thead>
+                    <tr>
+                        <th> Tasks </th>
+                        <th> actions </th>
+                    </tr>
+                    
+        </thead>
+        <tbody ng-repeat="x in todos | filter:search">
+                <tr >
+                        <td ng-model="x.isCompleted">
+                            <input type="checkbox" ng-model="x.isCompleted"/>
+                            <span class="done-{{x.isCompleted}}">{{x.task}}</span>
+                        </td>
+                        <td>
+                            <button ng-click="deleteTask($index)"> Delete </button>
+                        </td>
+                </tr>
+        </tbody>
+</table>
